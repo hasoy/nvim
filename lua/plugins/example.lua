@@ -10,16 +10,8 @@ if true then return {} end
 -- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
 
   { "nvimdev/lspsaga.nvim" },
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
 
   -- change trouble config
   {
@@ -83,6 +75,21 @@ return {
       end,
     },
   },
+  {
+    {
+      "CopilotC-Nvim/CopilotChat.nvim",
+      branch = "canary",
+      dependencies = {
+        { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      },
+      opts = {
+        debug = true, -- Enable debugging
+        -- See Configuration section for rest
+      },
+      -- See Commands section for default commands if you want to lazy load on them
+    },
+  },
 
   -- add pyright to lspconfig
   {
@@ -135,6 +142,10 @@ return {
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
   { import = "lazyvim.plugins.extras.lang.typescript" },
+  {
+    "willothy/moveline.nvim",
+    build = "make",
+  },
 
   -- add more treesitter parsers
   {
@@ -155,6 +166,9 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "golang",
+        "templ",
+        "tailwindcss",
       },
     },
   },
@@ -169,16 +183,8 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "tsx",
         "typescript",
+        "templ",
       })
-    end,
-  },
-
-  -- the opts function can also be used to change the default opts:
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      table.insert(opts.sections.lualine_x, "😄")
     end,
   },
 

@@ -1,9 +1,15 @@
 {
   "extras": [
-
+    "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.coding.yanky",
+    "lazyvim.plugins.extras.editor.leap",
+    "lazyvim.plugins.extras.editor.outline",
+    "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.tailwind",
+    "lazyvim.plugins.extras.ui.mini-animate"
   ],
   "news": {
     "NEWS.md": "2191"
   },
-  "version": 2
+  "version": 3
 }
