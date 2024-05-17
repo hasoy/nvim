@@ -21,7 +21,7 @@ return {
   { import = "lazyvim.plugins.extras.coding.copilot" },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    version = "v2.2.0",
+    version = "v2.8.0",
     -- branch = "canary", -- Use the canary branch if you want to test the latest features but it might be unstable
     -- Do not use branch and version together, either use branch or version
     dependencies = {
@@ -29,6 +29,10 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     opts = {
+      question_header = "## User ",
+      answer_header = "## Copilot ",
+      error_header = "## Error ",
+      separator = " ", -- Separator to use in chat
       prompts = prompts,
       auto_follow_cursor = false, -- Don't follow the cursor after getting response
       show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
@@ -57,6 +61,10 @@ return {
         accept_diff = {
           normal = "<C-y>",
           insert = "<C-y>",
+        },
+        -- Yank the diff in the response to register
+        yank_diff = {
+          normal = "gmy",
         },
         -- Show the diff
         show_diff = {
@@ -121,7 +129,27 @@ return {
         callback = function()
           vim.opt_local.relativenumber = true
           vim.opt_local.number = true
+
+          -- Get current filetype and set it to markdown if the current filetype is copilot-chat
+          local ft = vim.bo.filetype
+          if ft == "copilot-chat" then
+            vim.bo.filetype = "markdown"
+          end
         end,
+      })
+
+      -- Add which-key mappings
+      local wk = require("which-key")
+      wk.register({
+        g = {
+          m = {
+            name = "+Copilot Chat",
+            d = "Show diff",
+            p = "System prompt",
+            s = "Show selection",
+            y = "Yank diff",
+          },
+        },
       })
     end,
     event = "VeryLazy",

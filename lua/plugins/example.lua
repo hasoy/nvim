@@ -1,16 +1,6 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
-if true then return {} end
-
--- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
-
   { "nvimdev/lspsaga.nvim" },
 
   -- change trouble config
@@ -19,9 +9,6 @@ return {
     -- opts will be merged with the parent spec
     opts = { use_diagnostic_signs = true },
   },
-
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
 
   -- add symbols-outline
   {
@@ -75,23 +62,7 @@ return {
       end,
     },
   },
-  {
-    {
-      "CopilotC-Nvim/CopilotChat.nvim",
-      branch = "canary",
-      dependencies = {
-        { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-      },
-      opts = {
-        debug = true, -- Enable debugging
-        -- See Configuration section for rest
-      },
-      -- See Commands section for default commands if you want to lazy load on them
-    },
-  },
 
-  -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
@@ -111,15 +82,15 @@ return {
       "jose-elias-alvarez/typescript.nvim",
       init = function()
         require("lazyvim.util").lsp.on_attach(function(_, buffer)
-          -- stylua: ignore
-          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+            -- stylua: ignore
+            vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
           vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
         end)
       end,
     },
-    ---@class PluginLspOpts
+    -- ---@class PluginLspOpts
     opts = {
-      ---@type lspconfig.options
+      -- ---@type lspconfig.options
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
         tsserver = {},
@@ -147,7 +118,7 @@ return {
     build = "make",
   },
 
-  -- add more treesitter parsers
+  -- add more treesitter parsers gets overwritten in func after
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
