@@ -7,6 +7,7 @@ vim.keymap.set(
   require("telescope.builtin").resume,
   { noremap = true, silent = true, desc = "Resume" }
 )
+
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
@@ -14,9 +15,13 @@ local diagnostic_goto = function(next, severity)
     go({ severity = severity })
   end
 end
---Esc
-vim.keymap.set("i", "jj", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
--- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true, desc = "Save file" })
+vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
+vim.keymap.set(
+  "n",
+  "<leader>j",
+  "mx$a<Esc><cmd>join<cr>gi<Esc>lD`xp<cmd>delm x<cr>",
+  { noremap = true, silent = true, desc = "Suck in line below" }
+)
 vim.keymap.set("n", "<leader>xn", diagnostic_goto(true), { noremap = true, silent = true, desc = "Next diagnostic" })
 vim.keymap.set(
   "n",
