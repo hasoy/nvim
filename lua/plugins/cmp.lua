@@ -31,7 +31,7 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<C-l>"] = cmp.mapping.confirm({ select = true }),
+          ["<Tab>"] = cmp.mapping.confirm({ select = true }),
           ["<CR>"] = cmp.config.disable,
         }),
         sources = cmp.config.sources({
