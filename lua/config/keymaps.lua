@@ -8,6 +8,13 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Resume" }
 )
 
+vim.keymap.set(
+  "n",
+  "<leader><leader>",
+  require("telescope.builtin").find_files,
+  { noremap = true, silent = true, desc = "Find files" }
+)
+
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
