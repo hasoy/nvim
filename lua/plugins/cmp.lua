@@ -35,9 +35,8 @@ return {
           ["<CR>"] = cmp.config.disable,
         }),
         sources = cmp.config.sources({
+          { name = "luasnip" },
           { name = "nvim_lsp" },
-          { name = "luasnip" }, -- For luasnip users.
-          { name = "supermaven" },
         }, {
           { name = "buffer" },
         }),
