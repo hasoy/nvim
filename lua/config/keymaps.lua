@@ -5,6 +5,12 @@
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 
 vim.keymap.set("n", "<leader>r", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
+vim.keymap.set(
+  "n",
+  "<leader>rr",
+  '"_D',
+  { noremap = true, silent = true, desc = "Delete whole sentence without yanking" }
+)
 
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
