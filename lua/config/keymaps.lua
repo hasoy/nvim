@@ -1,19 +1,10 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-vim.keymap.set(
-  "n",
-  "<leader>sx",
-  require("telescope.builtin").resume,
-  { noremap = true, silent = true, desc = "Resume" }
-)
 
-vim.keymap.set(
-  "n",
-  "<leader><leader>",
-  require("telescope.builtin").find_files,
-  { noremap = true, silent = true, desc = "Find files" }
-)
+vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
+
+vim.keymap.set("n", "<leader>r", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
 
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
@@ -22,20 +13,24 @@ local diagnostic_goto = function(next, severity)
     go({ severity = severity })
   end
 end
-vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
+
 vim.keymap.set(
   "n",
   "<leader>j",
   "mx$a<Esc><cmd>join<cr>gi<Esc>lD`xp<cmd>delm x<cr>",
   { noremap = true, silent = true, desc = "Suck in line below" }
 )
+
 vim.keymap.set("n", "<leader>xn", diagnostic_goto(true), { noremap = true, silent = true, desc = "Next diagnostic" })
+
 vim.keymap.set(
   "n",
   "<leader>xp",
   diagnostic_goto(false),
   { noremap = true, silent = true, desc = "Previous diagnostic" }
 )
+
+vim.keymap.set("n", "<C-l>", "<cmd>e#<cr>", { noremap = true, silent = true, desc = "Previous open buffer" })
 
 -- Move Lines
 local moveline = require("moveline")

@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.opt.winbar = "%=%m %f"
 vim.o.signcolumn = "yes"
+vim.lsp.set_log_level("off")
