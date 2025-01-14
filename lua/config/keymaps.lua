@@ -36,7 +36,7 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Previous diagnostic" }
 )
 
-vim.keymap.set("n", "<C-l>", "<cmd>e#<cr>", { noremap = true, silent = true, desc = "Previous open buffer" })
+vim.keymap.set("n", "<C-:>", "<cmd>e#<cr>", { noremap = true, silent = true, desc = "Previous open buffer" })
 
 -- Move Lines
 local moveline = require("moveline")
