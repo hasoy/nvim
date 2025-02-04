@@ -5,6 +5,13 @@
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 vim.keymap.set("n", "vv", "v$", { desc = "Highlight to end of line" })
 
+vim.keymap.set(
+  "n",
+  "<leader>cp",
+  "<cmd>lua vim.cmd(\"let @+=expand('%')\")<CR>",
+  { noremap = true, silent = true, desc = "Copy path of current file" }
+)
+
 vim.keymap.set("n", "<leader>r", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
 vim.keymap.set(
   "n",
