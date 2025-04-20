@@ -13,3 +13,6 @@ require("config.lazy")
 --   },
 --   cache_enabled = 0,
 -- }
+
+-- vim.o.swapfile = false
+vim.o.directory = "/tmp//"

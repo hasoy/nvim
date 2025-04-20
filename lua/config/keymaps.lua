@@ -44,7 +44,7 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Previous diagnostic" }
 )
 
-vim.keymap.set("n", "<C-;>", "<cmd>e#<cr>", { noremap = true, silent = true, desc = "Previous open buffer" })
+vim.keymap.set("n", "<C-p>", "<cmd>e#<cr>", { noremap = true, silent = true, desc = "Previous open buffer" })
 
 -- Move Lines
 local moveline = require("moveline")
@@ -55,10 +55,6 @@ vim.keymap.set("v", "<A-k>", moveline.block_up)
 vim.keymap.set("v", "<A-Up>", moveline.block_up)
 vim.keymap.set("v", "<A-Down>", moveline.block_down)
 vim.keymap.set("v", "<A-j>", moveline.block_down)
-
--- in insert mode jump over words using ctrl + arrow keys
-vim.keymap.set("i", "<C-Backspace>", "<cmd><ESC>dibi<cr>", { noremap = true, silent = true, desc = "Delete word" })
-vim.keymap.set("i", "<C-Del>", "<cmd><ESC>diwi<cr>", { noremap = true, silent = true, desc = "Jump over word" })
 
 vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
 vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
