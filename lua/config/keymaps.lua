@@ -47,14 +47,14 @@ vim.keymap.set(
 vim.keymap.set("n", "<C-p>", "<cmd>e#<cr>", { noremap = true, silent = true, desc = "Previous open buffer" })
 
 -- Move Lines
-local moveline = require("moveline")
-vim.keymap.set("n", "<A-Up>", moveline.up)
-vim.keymap.set("n", "<A-j>", moveline.down)
-vim.keymap.set("n", "<A-Down>", moveline.down)
-vim.keymap.set("v", "<A-k>", moveline.block_up)
-vim.keymap.set("v", "<A-Up>", moveline.block_up)
-vim.keymap.set("v", "<A-Down>", moveline.block_down)
-vim.keymap.set("v", "<A-j>", moveline.block_down)
+-- local moveline = require("moveline")
+-- vim.keymap.set("n", "<A-Up>", moveline.up)
+-- vim.keymap.set("n", "<A-j>", moveline.down)
+-- vim.keymap.set("n", "<A-Down>", moveline.down)
+-- vim.keymap.set("v", "<A-k>", moveline.block_up)
+-- vim.keymap.set("v", "<A-Up>", moveline.block_up)
+-- vim.keymap.set("v", "<A-Down>", moveline.block_down)
+-- vim.keymap.set("v", "<A-j>", moveline.block_down)
 
 vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
 vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
