@@ -5,3 +5,4 @@ vim.opt.winbar = "%=%m %f"
 vim.o.signcolumn = "yes"
 vim.lsp.set_log_level("off")
 vim.opt.switchbuf = "useopen,usetab,newtab"
+vim.g.lazyvim_eslint_auto_format = true
