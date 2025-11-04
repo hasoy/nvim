@@ -35,6 +35,13 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Suck in line below" }
 )
 
+vim.keymap.set(
+  "n",
+  "<leader>ty",
+  'iit("", () => {\n})<Esc>klla',
+  { noremap = true, silent = true, desc = "Insert Vitest 'it' test block" }
+)
+
 vim.keymap.set("n", "<leader>xn", diagnostic_goto(true), { noremap = true, silent = true, desc = "Next diagnostic" })
 
 vim.keymap.set(
